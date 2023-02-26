@@ -1,8 +1,8 @@
 # SecureChest
 ## About
-This spigot plugin is created to provide security for players resources. It allows to craft special chests that
-both the location and combination are saved by the plugin in order to launch protection mechanism 
-like a 6 color wool pin.
+This spigot plugin is created to provide security for players resources. It allows users to craft a special chests which
+both the location and combination are saved by the plugin in order to launch a protection mechanism 
+like a 6 color wool pin when opened.
   
 ## Events
 ### OnBlockPlace

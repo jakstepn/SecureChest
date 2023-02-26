@@ -2,3 +2,4 @@ name: SecureChest
 version: 1.0
 author: jaksten
 main: io.github.jakstepn.Main
+api-version: 1.13
