@@ -1,0 +1,6 @@
+package io.github.jakstepn;
+
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class Main extends JavaPlugin {
+}
