@@ -45,11 +45,11 @@ public class PlayerEventHandler implements Listener {
                 p.sendMessage(ChatColor.GREEN + "This is your chest :)");
                 p.sendMessage(ChatColor.YELLOW + "Protection: " + chest.security.toLowerCase());
             } else {
-                e.setCancelled(true);
                 p.sendMessage(ChatColor.RED + "This is not your chest!");
                 p.sendMessage(ChatColor.RED + "Protection: " + chest.security.toLowerCase());
-                Bukkit.getPluginManager().callEvent(new ChestOpenEvent(p));
             }
+            e.setCancelled(true);
+            Bukkit.getPluginManager().callEvent(new ChestOpenEvent(p, chest));
         }
     }
 }

@@ -6,14 +6,14 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-public class ChestOpenEvent extends Event {
+public class PasswordWrongEvent extends Event {
     private static final HandlerList HANDLERS = new HandlerList();
-    private final Player player;
     private final SecureChest chest;
+    private final Player player;
 
-    public ChestOpenEvent(Player player, SecureChest chest) {
-        this.player = player;
+    public PasswordWrongEvent(SecureChest chest, Player player) {
         this.chest = chest;
+        this.player = player;
     }
 
     public static HandlerList getHandlerList() {
@@ -26,9 +26,11 @@ public class ChestOpenEvent extends Event {
         return HANDLERS;
     }
 
+    public SecureChest getChest() {
+        return chest;
+    }
+
     public Player getPlayer() {
         return player;
     }
-
-    public SecureChest getChest() { return chest; }
 }

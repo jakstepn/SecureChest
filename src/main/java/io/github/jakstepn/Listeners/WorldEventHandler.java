@@ -1,11 +1,13 @@
 package io.github.jakstepn.Listeners;
 
+import io.github.jakstepn.Events.ChestPlaceEvent;
 import io.github.jakstepn.Main;
 import io.github.jakstepn.Models.Location;
 import io.github.jakstepn.Models.SecureChest;
 import io.github.jakstepn.Models.Security;
 import io.github.jakstepn.Models.User;
 import io.github.jakstepn.Serialization.Files.FileManager;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -31,7 +33,8 @@ public class WorldEventHandler implements Listener {
         if(meta != null && meta.hasCustomModelData()) {
             Security security = Security.get(e.getItemInHand().getItemMeta().getCustomModelData());
 
-            e.getPlayer().sendMessage("Set Chest with " + security.toString().toLowerCase());
+            e.getPlayer().sendMessage(ChatColor.BOLD + "" + ChatColor.ITALIC + "" +
+                    ChatColor.YELLOW + "Set Chest with " + security.toString().toLowerCase());
 
             Player p = e.getPlayer();
             Block b = e.getBlock();
@@ -47,7 +50,8 @@ public class WorldEventHandler implements Listener {
                 return;
             }
 
-            FileManager.serializeChest(chest, main.getFolderPath());
+            e.setCancelled(true);
+            Bukkit.getServer().getPluginManager().callEvent(new ChestPlaceEvent(chest, p));
         }
     }
 

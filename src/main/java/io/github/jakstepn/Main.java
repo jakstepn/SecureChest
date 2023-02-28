@@ -1,10 +1,11 @@
 package io.github.jakstepn;
 
-import io.github.jakstepn.Gui.PinGui;
+import io.github.jakstepn.Gui.GuiHandler;
 import io.github.jakstepn.Items.ItemManager;
 import io.github.jakstepn.Listeners.ChestEventHandler;
 import io.github.jakstepn.Listeners.PlayerEventHandler;
 import io.github.jakstepn.Listeners.WorldEventHandler;
+import io.github.jakstepn.Passwords.Listeners.PasswordEventHandler;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -32,7 +33,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerEventHandler(this), this);
         getServer().getPluginManager().registerEvents(new ChestEventHandler(this), this);
         getServer().getPluginManager().registerEvents(new WorldEventHandler(this), this);
-        getServer().getPluginManager().registerEvents(new PinGui(), this);
+        getServer().getPluginManager().registerEvents(new GuiHandler(this), this);
+        getServer().getPluginManager().registerEvents(new PasswordEventHandler(this), this);
     }
 
     @Override
