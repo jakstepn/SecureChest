@@ -5,7 +5,7 @@ import io.github.jakstepn.Models.Location;
 
 public class NameGenerator {
 
-    private static final String separator = ",";
+    private static final String separator = "_";
 
     // Location is always unique for each chest
     public static String generateName(Location loc) {

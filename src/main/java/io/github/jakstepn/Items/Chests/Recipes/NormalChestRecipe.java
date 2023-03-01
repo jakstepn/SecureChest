@@ -11,6 +11,8 @@ public class NormalChestRecipe implements IRecipe {
     @Override
     public void createRecipe() {
         ItemStack item = ItemGenerator.generateChest(Security.NORMAL);
+        if(item == null) return;
+
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("chest_normal"), item);
         sr.shape("WWW", "WNW", "WWW");
         sr.setIngredient('W', Material.CHEST);

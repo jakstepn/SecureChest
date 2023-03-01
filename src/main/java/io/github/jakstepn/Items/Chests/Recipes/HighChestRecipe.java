@@ -11,6 +11,8 @@ public class HighChestRecipe implements IRecipe{
     @Override
     public void createRecipe() {
         ItemStack item = ItemGenerator.generateChest(Security.HIGH);
+        if(item == null) return;
+
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("chest_high"), item);
         sr.shape("WWW", "WGW", "WWW");
         sr.setIngredient('W', Material.CHEST);

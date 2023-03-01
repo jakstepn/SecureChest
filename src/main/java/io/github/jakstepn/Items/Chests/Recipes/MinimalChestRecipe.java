@@ -11,6 +11,8 @@ public class MinimalChestRecipe implements IRecipe{
     @Override
     public void createRecipe() {
         ItemStack item = ItemGenerator.generateChest(Security.MINIMAL);
+        if(item == null) return;
+
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("chest_minimal"), item);
         sr.shape("WWW", "WIW", "WWW");
         sr.setIngredient('W', Material.CHEST);

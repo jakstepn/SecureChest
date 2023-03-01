@@ -1,13 +1,18 @@
 package io.github.jakstepn.Gui;
 
 import io.github.jakstepn.Events.*;
+import io.github.jakstepn.Items.InventoryManager;
+import io.github.jakstepn.Items.Keys.IKey;
+import io.github.jakstepn.Items.Keys.StickKey;
 import io.github.jakstepn.Main;
-import io.github.jakstepn.Models.Item;
+import io.github.jakstepn.Models.Items.Enchant;
+import io.github.jakstepn.Models.Items.Item;
 import io.github.jakstepn.Models.SecureChest;
 import io.github.jakstepn.Passwords.PasswordManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,6 +30,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GuiHandler implements Listener {
 
@@ -49,6 +55,13 @@ public class GuiHandler implements Listener {
         Player p = e.getPlayer();
         Inventory inv = createInventory(p, chest);
         p.openInventory(inv);
+        IKey key = new StickKey(chest);
+        ItemStack keyItem = key.getItem(main);
+        if(InventoryManager.hasEmptySlot(p.getInventory())) {
+            p.getInventory().addItem(keyItem);
+        } else {
+            p.getWorld().dropItem(p.getLocation(), keyItem);
+        }
     }
 
     @EventHandler
@@ -148,7 +161,7 @@ public class GuiHandler implements Listener {
                 for(int i = 0; i < items.length; i++) {
                     ItemStack its = items[i];
                     if(items[i] != null && its.getItemMeta() != null) {
-                        chest.items.put(i, new Item(its.getType(), its.getAmount()));
+                        chest.items.put(i, new Item(its));
                     }
                 }
 
@@ -164,7 +177,9 @@ public class GuiHandler implements Listener {
     public void openChestInventory(SecureChest chest, Player p) {
         Inventory inv = Bukkit.createInventory(p, chestSize, chestInvName);
         for (Item item : chest.items.values().stream().toList()) {
-            inv.addItem(new ItemStack(item.materialType, item.amount));
+            ItemStack is = item.toItemStack();
+            if(is == null) continue;
+            inv.addItem(is);
         }
         p.openInventory(inv);
     }

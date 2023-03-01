@@ -11,6 +11,8 @@ public class BarelyAnyChestRecipe implements IRecipe{
     @Override
     public void createRecipe() {
         ItemStack item = ItemGenerator.generateChest(Security.BARELY_ANY);
+        if(item == null) return;
+
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("chest_barely"), item);
         sr.shape("WWW", "WRW", "WWW");
         sr.setIngredient('W', Material.CHEST);

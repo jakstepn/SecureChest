@@ -4,7 +4,6 @@ import io.github.jakstepn.Events.ChestSaveEvent;
 import io.github.jakstepn.Main;
 import io.github.jakstepn.Models.SecureChest;
 import io.github.jakstepn.Serialization.Files.FileManager;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 

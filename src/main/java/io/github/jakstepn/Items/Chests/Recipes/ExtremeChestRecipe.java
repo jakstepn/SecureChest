@@ -11,6 +11,8 @@ public class ExtremeChestRecipe implements IRecipe{
     @Override
     public void createRecipe() {
         ItemStack item = ItemGenerator.generateChest(Security.EXTREME);
+        if(item == null) return;
+
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("chest_extreme"), item);
         sr.shape("WWW", "WDW", "WWW");
         sr.setIngredient('W', Material.CHEST);

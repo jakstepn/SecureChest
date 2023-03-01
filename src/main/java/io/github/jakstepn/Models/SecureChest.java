@@ -1,6 +1,6 @@
 package io.github.jakstepn.Models;
 
-import org.bukkit.inventory.ItemStack;
+import io.github.jakstepn.Models.Items.Item;
 
 import java.util.HashMap;
 import java.util.Map;

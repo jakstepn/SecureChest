@@ -1,5 +1,6 @@
 package io.github.jakstepn;
 
+import io.github.jakstepn.Factory.MainFactory;
 import io.github.jakstepn.Gui.GuiHandler;
 import io.github.jakstepn.Items.ItemManager;
 import io.github.jakstepn.Listeners.ChestEventHandler;
@@ -11,6 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 
@@ -26,6 +28,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        new MainFactory().init(this);
         createCustomConfig();
         createChestFolder();
         folderPath = this.getDataFolder() + "/Chests/";

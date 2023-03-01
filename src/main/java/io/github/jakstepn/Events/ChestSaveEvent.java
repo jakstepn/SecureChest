@@ -1,6 +1,7 @@
 package io.github.jakstepn.Events;
 
 import io.github.jakstepn.Models.SecureChest;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.checkerframework.checker.nullness.qual.NonNull;
